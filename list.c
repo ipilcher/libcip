@@ -41,12 +41,12 @@ static void cip_vlist_free(struct cip_vlist_node *list,
 	}
 }
 
-void *cip_list_parse(char **remainder, size_t *count, cip_err_ctx *ctx,
+void *cip_list_parse(char **remainder, unsigned *count, cip_err_ctx *ctx,
 		     char *s, const cip_opt_type *type)
 {
 	struct cip_vlist_node *n, *list, **list_end;
 	unsigned char *values;
-	size_t i;
+	unsigned i;
 
 	list = NULL;
 	list_end = &list;

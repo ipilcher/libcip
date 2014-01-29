@@ -137,27 +137,27 @@ typedef struct cip_bool_list cip_bool_list;
 
 struct cip_int_list {
 	int *values;
-	size_t count;
+	unsigned count;
 };
 
 struct cip_short_list {
 	short *values;
-	size_t count;
+	unsigned count;
 };
 
 struct cip_float_list {
 	float *values;
-	size_t count;
+	unsigned count;
 };
 
 struct cip_str_list {
 	char **values;
-	size_t count;
+	unsigned count;
 };
 
 struct cip_bool_list {
 	_Bool *values;
-	size_t count;
+	unsigned count;
 };
 
 extern const cip_opt_type cip_opt_type_int;
@@ -262,7 +262,7 @@ cip_ini_file *cip_parse_file(cip_err_ctx *err_ctx, const char *file_name,
  * Type helpers
  */
 
-void *cip_list_parse(char **remainder, size_t *count, cip_err_ctx *ctx,
+void *cip_list_parse(char **remainder, unsigned *count, cip_err_ctx *ctx,
 		     char *s, const cip_opt_type *type);
 
 int cip_list_format(cip_err_ctx *ctx, char *buf, size_t size, void *values,
