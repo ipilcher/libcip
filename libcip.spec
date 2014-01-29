@@ -7,7 +7,7 @@ Summary:	C INI Parser
 Version:	%{lib_ver}
 Release:	1
 License:	GPLv2
-Source0:	%{name}-%{version}.tar.gz
+Source0:	https://github.com/ipilcher/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %description
 libcip is an INI parsing library for C programs.
