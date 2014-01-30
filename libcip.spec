@@ -1,11 +1,11 @@
 %define	api_ver		0.1
 %define so_ver		%{api_ver}.1
-%define lib_ver		%{so_ver}.1
+%define lib_ver		%{so_ver}.2
 
 Name:		libcip
 Summary:	C INI Parser
 Version:	%{lib_ver}
-Release:	1
+Release:	1%{?dist}
 License:	GPLv2
 Source0:	https://github.com/ipilcher/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
@@ -46,6 +46,10 @@ ln -s %{name}.so.%{version} %{buildroot}%{_libdir}/%{name}.so
 %attr(0755,root,root) %{_libdir}/%{name}.so
 
 %changelog
+* Thu Jan 30 2014 Ian Pilcher <arequipeno@gmail.com> - %{version}
+- Version %{version}
+- Add dist tag
+
 * Thu Jan 30 2014 Ian Pilcher <arequipeno@gmail.com> - %{version}
 - Version %{version}
 
