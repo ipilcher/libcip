@@ -53,8 +53,7 @@ struct cip_opt_schema {
 			     void *post_parse_data);
 	void *post_parse_data;
 	unsigned char flags;
-	unsigned char default_value[]
-			__attribute__((aligned(__BIGGEST_ALIGNMENT__)));
+	unsigned char default_value[] __attribute__((aligned));
 };
 
 struct cip_sect_schema {
