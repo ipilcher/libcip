@@ -64,6 +64,7 @@ const char *cip_last_err(const cip_err_ctx *ctx);
 #define CIP_SECT_REQUIRED	0x01
 #define CIP_SECT_MULTIPLE	0x02
 #define CIP_SECT_NOT_EMPTY	0x04
+#define CIP_SECT_CREATE		0X08
 
 struct cip_opt_type {
 	const char *name;

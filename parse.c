@@ -282,12 +282,28 @@ static int cip_parse_file_cb(struct cip_avl_node *node, void *context)
 	const char *format;
 
 	schema = (cip_sect_schema *)node;
-	if (!(schema->flags & CIP_SECT_REQUIRED))
+	if (!(schema->flags & (CIP_SECT_REQUIRED | CIP_SECT_CREATE)))
 		return 1;
 
 	ctx = context;
 
-	if (cip_ini_sect_get(ctx->file, schema->node.name) == NULL) {
+	if (cip_ini_sect_get(ctx->file, schema->node.name) != NULL)
+		return 1;
+
+	if (schema->flags & CIP_SECT_CREATE) {
+
+		ctx->sect = cip_ini_sect_new(ctx->err, ctx->file, schema);
+		if (ctx->sect == NULL)
+			return 0;
+
+		if (schema->options != NULL) {
+
+			node = (struct cip_avl_node *)schema->options;
+			if (cip_avl_foreach(node, cip_parse_sect_cb, ctx) == 0)
+				return 0;
+		}
+	}
+	else {
 
 		if (schema->flags & CIP_SECT_MULTIPLE)
 			format = "%s: Missing section [%s:*]";
