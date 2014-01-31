@@ -678,29 +678,32 @@ cip_ini_file *cip_parse_stream(cip_err_ctx *err_ctx, FILE *stream,
 	ctx.line_num = 0;
 	ctx.sect = NULL;
 
-	while (getline(&lineptr, &n, stream) > 0) {
+	if (stream != NULL) {
 
-		++(ctx.line_num);
+		while (getline(&lineptr, &n, stream) > 0) {
 
-		if (cip_parse_line(&ctx, lineptr) == -1) {
+			++(ctx.line_num);
+
+			if (cip_parse_line(&ctx, lineptr) == -1) {
+				free(lineptr);
+				cip_ini_file_free(ctx.file);
+				return NULL;
+			}
+		}
+
+		if (ferror(stream)) {
+			cip_err(ctx.err, "%s: %m", ctx.file_name);
 			free(lineptr);
 			cip_ini_file_free(ctx.file);
 			return NULL;
 		}
-	}
 
-	if (ferror(stream)) {
-		cip_err(ctx.err, "%s: %m", ctx.file_name);
 		free(lineptr);
-		cip_ini_file_free(ctx.file);
-		return NULL;
-	}
 
-	free(lineptr);
-
-	if (cip_check_prev_sect(&ctx) == -1) {
-		cip_ini_file_free(ctx.file);
-		return NULL;
+		if (cip_check_prev_sect(&ctx) == -1) {
+			cip_ini_file_free(ctx.file);
+			return NULL;
+		}
 	}
 
 	tree = (struct cip_avl_node *)schema->sections;
