@@ -5,7 +5,7 @@
 Name:		libcip
 Summary:	C INI Parser
 Version:	%{lib_ver}
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2
 Source0:	https://github.com/ipilcher/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
@@ -34,9 +34,9 @@ mkdir -p %{buildroot}%{_libdir}
 cp %{name}.so.%{version} %{buildroot}%{_libdir}
 ln -s %{name}.so.%{version} %{buildroot}%{_libdir}/%{name}.so
 
-%post -p /usr/sbin/ldconfig
+%post -p /sbin/ldconfig
 
-%postun -p /usr/sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %attr(0755,root,root) %{_libdir}/%{name}.so.%{version}
@@ -46,24 +46,28 @@ ln -s %{name}.so.%{version} %{buildroot}%{_libdir}/%{name}.so
 %attr(0755,root,root) %{_libdir}/%{name}.so
 
 %changelog
-* Fri Jan 31 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.4
+* Fri Jan 31 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.4-2
+- Use EL6-compatible ldconfig path in scriptlets
+- Add release to changelog versions
+
+* Fri Jan 31 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.4-1
 - Version 0.1.1.4
 - Fix versions in changelog
 
-* Fri Jan 31 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.3
+* Fri Jan 31 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.3-1
 - Version 0.1.1.3
 
-* Thu Jan 30 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.2
+* Thu Jan 30 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.2-1
 - Version 0.1.1.2
 - Add dist tag
 
-* Thu Jan 30 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.1
+* Thu Jan 30 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.1-1
 - Version 0.1.1.1
 
-* Wed Jan 29 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.0
+* Wed Jan 29 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.0-1
 - Version 0.1.1.0
 
-* Mon Jan 27 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.0.0
+* Mon Jan 27 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.0.0-1
 - Hide unnecessary symbols
 - Optimize for size
 - Rationalize(?) pre-release API/ABI versions
