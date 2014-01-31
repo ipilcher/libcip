@@ -36,7 +36,7 @@ static const struct cip_bool_term cip_bool_terms[] = {
 	{ "0",		sizeof("0") - 1,	false	},
 	{ "on",		sizeof("on") - 1,	true	},
 	{ "off",	sizeof("off") - 1,	false	},
-	{ NULL }
+	{ .term = NULL }
 };
 
 static char *cip_bool_parse(cip_err_ctx *ctx, void *value, char *s)
