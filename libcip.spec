@@ -1,6 +1,6 @@
 %define	api_ver		0.1
 %define so_ver		%{api_ver}.1
-%define lib_ver		%{so_ver}.2
+%define lib_ver		%{so_ver}.3
 
 Name:		libcip
 Summary:	C INI Parser
@@ -46,6 +46,9 @@ ln -s %{name}.so.%{version} %{buildroot}%{_libdir}/%{name}.so
 %attr(0755,root,root) %{_libdir}/%{name}.so
 
 %changelog
+* Fri Jan 31 2014 Ian Pilcher <arequipeno@gmail.com> - %{version}
+- Version %{version}
+
 * Thu Jan 30 2014 Ian Pilcher <arequipeno@gmail.com> - %{version}
 - Version %{version}
 - Add dist tag
