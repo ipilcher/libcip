@@ -14,7 +14,9 @@
  *   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+#if 0
 #define SUBSTR_DEBUG
+#endif
 
 #define _GNU_SOURCE	/* for rawmemchr */
 
