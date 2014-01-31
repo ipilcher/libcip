@@ -746,7 +746,7 @@ cip_ini_file *cip_parse_file(cip_err_ctx *err_ctx, const char *file_name,
 /*
  * Temporary testing stuff
  */
-
+#if 0
 static int cip_dump_value(struct cip_avl_node *node,
 			  void *context __attribute__((unused)))
 {
@@ -796,3 +796,4 @@ void cip_dump_file(cip_ini_file *file)
 {
 	cip_avl_foreach(&file->sections->node, cip_dump_section, NULL);
 }
+#endif
