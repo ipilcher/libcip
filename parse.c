@@ -197,7 +197,7 @@ static cip_ini_sect *cip_line_sect_multi(struct cip_parse_ctx *ctx,
 
 	id_copy = strdup(id);
 	if (id_copy == NULL)
-		return cip_err_ptr(ctx->err, strerror(ENOMEM));
+		return cip_err_ptr(ctx->err, "%s", strerror(ENOMEM));
 
 	inst = cip_ini_inst_new(ctx->err, sect, sect_schema, id_copy);
 	if (inst == NULL) {

@@ -57,7 +57,7 @@ cip_file_schema *cip_file_schema_new1(cip_err_ctx *ctx)
 
 	new = malloc(sizeof *new);
 	if (new == NULL)
-		return cip_err_ptr(ctx, strerror(ENOMEM));
+		return cip_err_ptr(ctx, "%s", strerror(ENOMEM));
 
 	new->sections = NULL;
 	return new;
@@ -88,7 +88,7 @@ cip_sect_schema *cip_sect_schema_new1(cip_err_ctx *ctx,
 
 	new = malloc(sizeof *new);
 	if (new == NULL)
-		return cip_err_ptr(ctx, strerror(ENOMEM));
+		return cip_err_ptr(ctx, "%s", strerror(ENOMEM));
 
 	new->node.name = name;
 	new->flags = flags;

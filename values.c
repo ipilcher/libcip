@@ -67,7 +67,7 @@ cip_ini_file *cip_ini_file_new(cip_err_ctx *ctx, const cip_file_schema *schema)
 
 	new = malloc(sizeof *new);
 	if (new == NULL)
-		return cip_err_ptr(ctx, strerror(ENOMEM));
+		return cip_err_ptr(ctx, "%s", strerror(ENOMEM));
 
 	new->schema = schema;
 	new->sections = NULL;
@@ -82,7 +82,7 @@ cip_ini_sect *cip_ini_sect_new(cip_err_ctx *ctx, cip_ini_file *file,
 
 	new = malloc(sizeof *new);
 	if (new == NULL)
-		return cip_err_ptr(ctx, strerror(ENOMEM));
+		return cip_err_ptr(ctx, "%s", strerror(ENOMEM));
 
 	new->node.name = schema->node.name;
 	new->schema = schema;
@@ -108,7 +108,7 @@ cip_ini_sect *cip_ini_inst_new(cip_err_ctx *ctx, cip_ini_sect *sect,
 
 	new = malloc(sizeof *new);
 	if (new == NULL)
-		return cip_err_ptr(ctx, strerror(ENOMEM));
+		return cip_err_ptr(ctx, "%s", strerror(ENOMEM));
 
 	new->node.name = id;
 	new->schema = schema;
@@ -130,7 +130,7 @@ int cip_ini_value_new(cip_err_ctx *ctx, cip_ini_sect *sect,
 
 	new = malloc(sizeof *new + schema->type->size);
 	if (new == NULL)
-		return cip_err_int(ctx, strerror(ENOMEM));
+		return cip_err_int(ctx, "%s", strerror(ENOMEM));
 
 	new->node.name = schema->node.name;
 	new->schema = schema;
