@@ -1,11 +1,11 @@
 %define	api_ver		0.1
 %define so_ver		%{api_ver}.1
-%define lib_ver		%{so_ver}.4
+%define lib_ver		%{so_ver}.5
 
 Name:		libcip
 Summary:	C INI Parser
 Version:	%{lib_ver}
-Release:	2%{?dist}
+Release:	1%{?dist}
 License:	GPLv2
 Source0:	https://github.com/ipilcher/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
@@ -46,6 +46,9 @@ ln -s %{name}.so.%{version} %{buildroot}%{_libdir}/%{name}.so
 %attr(0755,root,root) %{_libdir}/%{name}.so
 
 %changelog
+* Wed Oct  1 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.5-1
+- Update SPEC for 0.1.1.5
+
 * Fri Jan 31 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.4-2
 - Use EL6-compatible ldconfig path in scriptlets
 - Add release to changelog versions
