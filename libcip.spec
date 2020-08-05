@@ -1,6 +1,6 @@
 %define	api_ver		0.1
 %define so_ver		%{api_ver}.1
-%define lib_ver		%{so_ver}.5
+%define lib_ver		%{so_ver}.6
 
 Name:		libcip
 Summary:	C INI Parser
@@ -23,7 +23,7 @@ libcip INI parsing library.
 %setup0
 
 %build
-gcc -Os -Wall -Wextra -shared -fPIC -fvisibility=hidden \
+gcc -g -Os -Wall -Wextra -shared -fPIC -fvisibility=hidden \
 	-Wl,-soname,%{name}.so.%{so_ver} -o %{name}.so.%{version} *.c types/*.c
 
 %install
@@ -40,12 +40,16 @@ ln -s %{name}.so.%{version} %{buildroot}%{_libdir}/%{name}.so
 
 %files
 %attr(0755,root,root) %{_libdir}/%{name}.so.%{version}
+%{_libdir}/%{name}.so.%{so_ver}
 
 %files devel
 %attr(0644,root,root) %{_includedir}/%{name}.h
-%attr(0755,root,root) %{_libdir}/%{name}.so
+%{_libdir}/%{name}.so
 
 %changelog
+* Wed Aug  5 2020 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.6-1
+- Fix RPM build on EL 8
+
 * Wed Oct  1 2014 Ian Pilcher <arequipeno@gmail.com> - 0.1.1.5-1
 - Update SPEC for 0.1.1.5
 
